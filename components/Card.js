@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
     View,
     Text,
@@ -9,8 +9,6 @@ import {
     PanResponder,
     Animated,
 } from 'react-native';
-// import axios from 'axios';
-
 
 panResponder = (props) => {
     this.pan = new Animated.ValueXY();
@@ -62,7 +60,7 @@ export default function Card(props) {
         <Animated.View
             {...this.cardPanResponder.panHandlers}
             style={[styles.cardContainer, animatedStyle]} >
-            <View style={styles.cardContainer}>
+            <View style={styles.card}>
                 <Image 
                     style={styles.restaurantImage}
                     source={{ uri: restaurant.image_url }}
@@ -90,32 +88,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        // width: width * 0.90,
-        // height: height * 0.82,
-        // backgroundColor: 'white',
+        backgroundColor: 'white',
         borderWidth: 1,
         borderColor: 'lightgrey',
         borderRadius: 8,
-        // margin: 18,
-        // padding: 10,
+    },
+    card: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
     },
     restaurantImage: {
         position: 'absolute',
         width: width * 0.90,
         height: height * .82,
-    },
-    restaurantDetailsContainer: {
-        // flexDirection: 'row',
-        // justifyContent: 'space-between',
-        // marginTop: 50,
-    },
-    restaurantDetails: {
+        borderWidth: 1,
+        borderColor: 'lightgrey',
+        borderRadius: 8,
     },
     restaurantTitle: {
         fontSize: 24,
         fontWeight: '600',
         color: '#FFFFFF',
-        // width: width * .75,
     },
     restaurantDistance: {
         fontSize: 20,
