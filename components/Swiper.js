@@ -27,20 +27,16 @@ export default function Swiper() {
         });
     }, []);
 
-    const [profileIndex, setProfileIndex] = useState(0);
-    nextCard = () => {
+    const [profileIndex, setProfileIndex] = useState(1);
+    const nextCard = () => {
         setProfileIndex(profileIndex + 1);
     }
-
-    {/* {businessList.map( (restaurant, index) => {
-    return <Text key={index}>{restaurant.name}</Text>
-    })} */}
 
     return (
         <View>
             {businessList.slice(profileIndex, profileIndex + 5).reverse().map((restaurant, index) => {
                 return (
-                    <Card restaurant={restaurant} key={restaurant.id} onSwipeOff={this.nextCard} />
+                    <Card restaurant={restaurant} key={restaurant.id} onSwipeOff={nextCard} />
                 );
             })}
         </View>

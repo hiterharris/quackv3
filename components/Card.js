@@ -52,9 +52,8 @@ export default function Card(props) {
         ],
     }
 
-
-    const restaurant = props.restaurant;
-    console.log(props);
+    // const restaurant = props.restaurant;
+    console.log(props.restaurant.categories[0].alias);
 
     return (
         <Animated.View
@@ -63,15 +62,15 @@ export default function Card(props) {
             <View style={styles.card}>
                 <Image 
                     style={styles.restaurantImage}
-                    source={{ uri: restaurant.image_url }}
+                    source={{ uri: props.restaurant.image_url }}
                 />
                 <View style={styles.restaurantDetailsContainer}>
-                    <View>
-                        <Text style={styles.restaurantTitle}>{restaurant.name}</Text>
-                        <Text style={styles.restaurantCategory}>Category: </Text>
-                        <Text style={styles.restaurantDistance}>Distance: </Text>
+                    <View style={styles.restaurantDetails}>
+                        <Text style={styles.restaurantTitle}>{props.restaurant.name}</Text>
+                        <Text style={styles.restaurantCategory}>Category: {props.restaurant.categories[0].alias.toUpperCase()} </Text>
+                        <Text style={styles.restaurantRating}>Rating: {props.restaurant.rating} ({props.restaurant.review_count})</Text>
                     </View>
-                    <View style={styles.info} onPress={() => Linking.openURL(restauraunt.url)}>
+                    <View style={styles.info} onPress={() => Linking.openURL(props.restauraunt.url)}>
                         <Image style={styles.infoImage} source={require('../assets/images/info-icon.png')} />
                     </View>
                 </View>
@@ -107,6 +106,9 @@ const styles = StyleSheet.create({
         borderColor: 'lightgrey',
         borderRadius: 8,
     },
+    restaurantDetailsContainer: {
+        flex: 1,
+    },
     restaurantTitle: {
         fontSize: 24,
         fontWeight: '600',
@@ -122,6 +124,11 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         marginTop: 5,
         marginBottom: 5,
+    },
+    restaurantRating: {
+        fontSize: 20,
+        fontWeight: '300',
+        color: '#FFFFFF',
     },
     info: {
         marginTop: 5,
